@@ -11,6 +11,12 @@ function checkPrice () {
     var nowRow = 2;
     var nowPrice = sheetData.getRange(nowRow, priceCol).getValue()
     
+    // 現在のIDを退避
+    var auctionRange = sheetData.getRange(nowRow, idCol)
+    var auctionID = auctionRange.getValue()
+    auctionRange.clear();
+    auctionRange.setValue(auctionID);
+    
     // 前回の価格を取得
     var lastRow = sheetData.getDataRange().getLastRow()
     var lastPrice = sheetData.getRange(lastRow, priceCol).getValue()
@@ -29,7 +35,7 @@ function checkPrice () {
         var bidTime = Utilities.formatDate(date, 'Asia/Tokyo', 'MM/dd HH:mm');
         sheetData.getRange(lastRow + 1, timeCol).setValue(bidTime);
         
-        // LINE Notify に渡す
+        // LINE messaging API に渡す
         var message=String(nowPrice).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') + "円だよ\n"　+
         "https://page.auctions.yahoo.co.jp/auction/" + sheetData.getRange(nowRow, idCol).getValue();
         sendHttpPost(message);
