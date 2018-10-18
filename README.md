@@ -1,9 +1,9 @@
 # kuroeについて
-くろえはネットオークションで高値が更新されたらlineに通知してくれるbotです。
+くろえはネットオークションで高値が更新されたらlineに通知してくれる仕組みです。
 
 ## 仕様
-google app scriptでクローリング　　
+IMPORTXML関数でスクレイピング
 
-spreadsheet更新　　
+spreadsheetを更新　　
 
-高値が更新されたらline通知　　
+高値が更新されたらLineNotificationに通知　　
