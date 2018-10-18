@@ -11,12 +11,6 @@ function checkPrice () {
     var nowRow = 2;
     var nowPrice = sheetData.getRange(nowRow, priceCol).getValue()
     
-    // 現在のIDを退避
-    var auctionRange = sheetData.getRange(nowRow, idCol)
-    var auctionID = auctionRange.getValue()
-    auctionRange.clear();
-    auctionRange.setValue(auctionID);
-    
     // 前回の価格を取得
     var lastRow = sheetData.getDataRange().getLastRow()
     var lastPrice = sheetData.getRange(lastRow, priceCol).getValue()
@@ -41,6 +35,7 @@ function checkPrice () {
         sendHttpPost(message);
         
     } else {
+        //    動作確認用
         //    var message="されなかったよ";
         //    sendHttpPost(message);
     }
